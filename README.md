@@ -1,4 +1,4 @@
-# the-pizza-task-frontend
+# The Pizza Task APP
 Frontend in ReactJS for Pizza Task App
 
 To install type: npm install
