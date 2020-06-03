@@ -18,20 +18,15 @@ import {
 
 const PASSWORD = 'testingpurpose'
 
-const apiURL_CreateOrder = 'https://the-pizza-task-backend.herokuapp.com/tasks'
-const AUTH_TOKEN='Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNkNjZiNDliNjBlZjAwMTc0Yjg4OWYiLCJpYXQiOjE1OTA1ODgzNTJ9.T5lW6nvLrUJSGQ0doOXqCkr9xeWQiYUmojxNRXcIEKQ'
-const apiURL_EXCHANGE = 'https://api.exchangeratesapi.io/latest?symbols=USD';
-const apiURL_CREATE_USER = 'https://the-pizza-task-backend.herokuapp.com/users/';
-
-const ORDER_MOCK = {            
-    "order":[
-    {"description": "pizza napolitana","units":5,"price":55.99},
-    {"description": "pizza margherita","units":"3","price":"55.99"},
-    {"description": "pizza Buenos Aires","units":"1","price":"54.99"},
-    {"description": "pizza Munich","units":10, "price":54.99},
-    {"description": "pizza Franckfurt","units":10, "price":54.99}
-    ],
-"completed": true}
+// const ORDER_MOCK = {            
+//     "order":[
+//     {"description": "pizza napolitana","units":5,"price":55.99},
+//     {"description": "pizza margherita","units":"3","price":"55.99"},
+//     {"description": "pizza Buenos Aires","units":"1","price":"54.99"},
+//     {"description": "pizza Munich","units":10, "price":54.99},
+//     {"description": "pizza Franckfurt","units":10, "price":54.99}
+//     ],
+// "completed": true}
 
 const axios = require('axios')
 
@@ -60,8 +55,8 @@ const Form = (props) => {
         axios(
             {
                 method: 'post',
-                url:apiURL_CreateOrder,
-                headers:{'Authorization':AUTH_TOKEN},
+                url:process.env.REACT_APP_apiURL_CREATE_ORDER,
+                headers:{'Authorization': process.env.REACT_APP_AUTH_TOKEN},
                 data: ORDER
             })
             .then(res=> {
@@ -76,7 +71,7 @@ const Form = (props) => {
       axios(
         {
             method: 'post',
-            url:apiURL_CREATE_USER,
+            url:process.env.REACT_APP_apiURL_CREATE_USER,
             data: {...data, password:'testPasword'}
         })
         .then(res=> {
