@@ -4,7 +4,6 @@ import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 
 import Footer from './components/Footer';
 import Menu from './components/Menu';
-import Header from './components/Header';
 
 
 
@@ -12,10 +11,6 @@ export const OrderContext = React.createContext()
 
 const axios = require('axios')
 
-const AUTH_TOKEN='Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWNkNjZiNDliNjBlZjAwMTc0Yjg4OWYiLCJpYXQiOjE1OTA1ODgzNTJ9.T5lW6nvLrUJSGQ0doOXqCkr9xeWQiYUmojxNRXcIEKQ'
-const apiURL_EXCHANGE = 'https://api.exchangeratesapi.io/latest?symbols=USD';
-const apiURL_MENUS = 'https://the-pizza-task-backend.herokuapp.com/menu';
-const apiURL_USER = 'https://the-pizza-task-backend.herokuapp.com/users/me';
 
 const initialState = {
     loading: true,
@@ -65,10 +60,10 @@ const reducer = (state, action) => {
 const App = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const [exchange, setExchange] = useState({})
-  
+    //console.log('ENV:',REACT_APP_AUTH_TOKEN)
     
     useEffect(() => {
-          axios.get(apiURL_MENUS)
+          axios.get(process.env.REACT_APP_apiURL_MENUS)
             .then(res=>{
                 //Initialize order
                 const menu = res.data[0].pizzas
@@ -79,7 +74,7 @@ const App = () => {
                     payload:menu
                 })
             })  
-        fetch(apiURL_EXCHANGE)
+        fetch(process.env.REACT_APP_apiURL_EXCHANGE)
           .then(res => res.json())
           .then(response => {
             const {rates} = response;
