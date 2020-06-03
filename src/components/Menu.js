@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { OrderContext } from '../App';
 import Checkout from './Checkout';
-import Header from './Header';
 import { Button, PseudoBox , Text, Spinner, List, Tooltip} from '@chakra-ui/core';
 
 let neworder = []

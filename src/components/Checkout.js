@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { Button, PseudoBox, Spinner } from '@chakra-ui/core';
+import { PseudoBox, Spinner } from '@chakra-ui/core';
 import Form from './Form';
 
 //WE ASSUME THE COST OF DELIVERY 5% OF THE TOTAL
